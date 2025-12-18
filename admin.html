@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | EventMate</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <img src="assets/Gemini_Generated_Image_xmfiwyxmfiwyxmfi.png" alt="EventMate Logo">
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="event.html">Event</a></li>
+            <li><a href="admin.html">Admin</a></li>
+        </ul>
+    </nav>
+
+    <!-- Admin Dashboard -->
+    <main>
+        <section class="hero">
+            <h1>Admin Dashboard</h1>
+            <p>Manage registrations, verify payments, and track event check-ins.</p>
+
+            <!-- Stats Section -->
+            <div class="cta-buttons" style="margin-bottom: 30px;">
+                <div class="btn">Total Registrations: <strong>0</strong></div>
+                <div class="btn">Checked In: <strong>0</strong></div>
+                <div class="btn">Pending Payments: <strong>0</strong></div>
+            </div>
+
+            <!-- Search -->
+            <input type="text" placeholder="Search by name or email" style="
+                    width: 100%;
+                    max-width: 400px;
+                    padding: 10px;
+                    margin-bottom: 20px;
+                    border-radius: 6px;
+                    border: 1px solid #ccc;
+                ">
+            <table id="registrationsTable" border="1" cellspacing="0" cellpadding="10"
+                style="width:100%; margin-top:20px;">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Payment</th>
+                        <th>Check-In</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data will come from JS -->
+                </tbody>
+            </table>
+            <!-- Scanner Button -->
+            <div class="cta-buttons" style="margin-top: 30px;">
+                <a href="scan.html" class="btn btn-primary">Open QR Scanner</a>
+                <a href="#" class="btn btn-primary" id="logoutBtn">Logout</a>
+
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 EventMate. All rights reserved.</p>
+    </footer>
+    <script src="js/admin.js"></script>
+</body>
+
+</html>

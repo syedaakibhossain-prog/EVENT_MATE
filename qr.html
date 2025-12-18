@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your QR Code | EventMate</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body onload="generateQr()">
+
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <img src="assets/Gemini_Generated_Image_xmfiwyxmfiwyxmfi.png" alt="EventMate Logo">
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="event.html">Event</a></li>
+            <li><a href="register.html">Register</a></li>
+        </ul>
+    </nav>
+
+    <!-- QR Section -->
+    <main>
+        <section class="hero">
+            <h1>Registration Successful 🎉</h1>
+            <p>
+                Thank you for registering. Please keep this QR code safe and present it
+                at the event entry for verification.
+            </p>
+
+            <!-- QR Card -->
+            <div style="
+                background:#ffffff;
+                padding:30px;
+                border-radius:8px;
+                max-width:360px;
+                margin:30px auto;
+                border:1px solid #e0e0e0;
+                text-align:center;
+            ">
+
+                <h3 style="margin-bottom:15px;">Your Entry QR Code</h3>
+
+                <!-- Placeholder QR -->
+                <div id="qrCode" style="width:128px; height:128px; margin:0 auto;"></div>
+
+
+                <p style="font-size:14px; color:#666;">
+                    Registration ID: <strong id="qrCodeValue"></strong>
+                </p>
+            </div>
+
+            <!-- Actions -->
+            <div class="cta-buttons">
+                <button class="btn">Download QR</button>
+                <a href="index.html" class="btn btn-primary">Back to Home</a>
+            </div>
+
+            <p style="margin-top:20px; font-size:14px; color:#666;">
+                Please arrive at least 15 minutes early and show this QR code at the entry gate.
+            </p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 EventMate. All rights reserved.</p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="js/qr.js"></script>
+</body>
+
+</html>

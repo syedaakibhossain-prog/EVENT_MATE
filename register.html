@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | EventMate</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <img src="assets/Gemini_Generated_Image_xmfiwyxmfiwyxmfi.png" alt="EventMate Logo">
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="event.html">Event</a></li>
+            <li><a href="register.html">Register</a></li>
+        </ul>
+    </nav>
+
+    <!-- Registration Section -->
+    <main>
+        <section class="hero">
+            <h1>Event Registration</h1>
+            <p>Please fill in your details and complete the payment to confirm your registration.</p>
+
+            <!-- Registration Form -->
+            <form id="registrationForm" class="form-container">
+
+                <label for="name">Full Name</label>
+                <input type="text" id="name" required>
+
+                <label for="email">Email Address</label>
+                <input type="email" id="email" required>
+
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" required>
+
+                <!-- Payment Section -->
+                <h3 style="margin-top: 30px;">Registration Fee</h3>
+                <p><strong>Amount:</strong> ₹199</p>
+
+                <p>
+                    Pay using UPI to the following ID:
+                    <br>
+                    <strong>eventmate@upi</strong>
+                </p>
+
+                <p style="font-size: 14px; color: #666;">
+                    After payment, upload the screenshot below for verification.
+                </p>
+
+                <label for="paymentProof">Upload Payment Screenshot</label>
+                <input type="file" id="paymentProof" accept="image/*" required>
+
+                <button type="submit" class="btn btn-primary" style="margin-top: 20px;">
+                    Submit Registration
+                </button>
+            </form>
+
+            <div class="cta-buttons" style="margin-top: 30px;">
+                <a href="event.html" class="btn">Back to Event</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 EventMate. All rights reserved.</p>
+    </footer>
+
+    <!-- JS -->
+    <script src="js/register.js"></script>
+
+</body>
+
+</html>

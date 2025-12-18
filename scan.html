@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Scanner | EventMate Admin</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <img src="assets/Gemini_Generated_Image_xmfiwyxmfiwyxmfi.png" alt="EventMate Logo">
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="admin.html">Dashboard</a></li>
+            <li><a href="scan.html">Scan QR</a></li>
+            <li><a href="index.html">Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Scanner Section -->
+    <main>
+        <section class="hero">
+            <h1>QR Code Scanner</h1>
+            <p>
+                Scan the participant’s QR code to verify registration and mark check-in.
+            </p>
+
+            <!-- Scanner Container -->
+            <div style="
+                background:#ffffff;
+                border:1px solid #e0e0e0;
+                border-radius:8px;
+                max-width:500px;
+                margin:30px auto;
+                padding:30px;
+                text-align:center;
+            ">
+
+                <h3 style="margin-bottom:15px;">Camera Preview</h3>
+
+                <!-- Camera Placeholder -->
+                <div style="
+                    width:100%;
+                    height:280px;
+                    background:#f0f0f0;
+                    border:2px dashed #ccc;
+                    border-radius:6px;
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                    color:#777;
+                    margin-bottom:20px;
+                ">
+                    Camera feed will appear here
+                </div>
+
+                <p style="font-size:14px; color:#666;">
+                    Allow camera access and place the QR code inside the frame.
+                </p>
+            </div>
+
+            <!-- Scan Result -->
+            <div style="
+                background:#ffffff;
+                border:1px solid #e0e0e0;
+                border-radius:8px;
+                max-width:500px;
+                margin:30px auto;
+                padding:20px;
+            ">
+
+                <h3>Scan Result</h3>
+                <p><strong>Name:</strong> —</p>
+                <p><strong>Email:</strong> —</p>
+                <p><strong>Payment Status:</strong> —</p>
+                <p><strong>Check-In Status:</strong> —</p>
+
+                <button class="btn btn-primary" style="margin-top:15px;">
+                    Mark as Checked-In
+                </button>
+            </div>
+
+            <!-- Navigation -->
+            <div class="cta-buttons">
+                <a href="admin.html" class="btn">Back to Dashboard</a>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 EventMate. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>
