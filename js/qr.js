@@ -1,13 +1,20 @@
+/**
+ * Generate QR Code
+ */
 function generateQr() {
+    // Get user from local storage
     const user = JSON.parse(
         localStorage.getItem("eventmate_current_user")
     );
+    // Get qr code element
     const qrcode = document.getElementById("qrCode");
+    // Get qr code value element
     const qrCodeValue = document.getElementById("qrCodeValue");
+    // Check if user is logged in
     if (!user) {
         alert("Please register first");
         window.location.href = "register.html";
-    } else {
+    } else { // Generate QR Code
         qrcode.innerHTML = "";
         new QRCode(qrcode, {
             text: user.id,
@@ -22,7 +29,9 @@ function generateQr() {
 }
 
 const downlodeQr = document.querySelector(".btn");
-
+/**
+ * Download QR Code
+ */
 downlodeQr.addEventListener("click", () => {
     const qrContainer = document.getElementById("qrCode");
     const canvas = qrContainer.querySelector("canvas");
