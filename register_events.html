@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Events</title>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="assets/Gemini_Generated_Image_xmfiwyxmfiwyxmfi.png" alt="EventMate Logo">
+        </div>
+    </header>
+    <main>
+        <section>
+            <h1>Events</h1>
+            <p>Manage your events here</p>
+        </section>
+        <form class="form-container" id="addEventForm">
+            <label for="name">Name</label>
+            <input type="text" id="name" required>
+            <label for="description">Description</label>
+            <input type="text" id="description" required>
+            <label for="venue">Venue</label>
+            <input type="text" id="venue" required>
+            <label for="date">Date</label>
+            <input type="date" id="date" required>
+            <label for="registrationFee">Registration Fee</label>
+            <input type="number" id="registrationFee" required>
+            <button type="submit" class="btn btn-primary" id="addEventBtn">Add Event</button>
+        </form>
+        <div class="hero" id="events">
+            <!-- Events will be rendered here -->
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 EventMate. All rights reserved.</p>
+    </footer>
+    <script src="js/reg_events.js"></script>
+</body>
+
+</html>
