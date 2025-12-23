@@ -27,6 +27,7 @@ Users can register for events and receive a downloadable QR code, while admins c
 
 ### 🛠️ Admin Side
 - Admin login (credential-based)
+- Secure admin authentication
 - Create events with:
   - Event name
   - Description
@@ -44,7 +45,7 @@ Users can register for events and receive a downloadable QR code, while admins c
 
 ---
 
-## 🚀 Planned Features (MVP Scope)
+## 🚧 MVP Features (Pending)
 
 ### 👤 User Enhancements
 - Event-specific registration routing
@@ -53,11 +54,11 @@ Users can register for events and receive a downloadable QR code, while admins c
 - Improved mobile responsiveness
 
 ### 🛠️ Admin Enhancements
-- Secure admin authentication
 - View registered users per event
-- QR code scanning for attendee check-in
+- QR code scanning for attendee check-in (**MVP critical**)
 - Attendance tracking (checked-in / not checked-in)
 - Edit & delete events
+
 
 ### 🔐 Future Improvements
 - Backend integration
@@ -66,13 +67,43 @@ Users can register for events and receive a downloadable QR code, while admins c
 - Role-based access control
 
 ---
+## 🔄 Application Flow
 
-## 🧪 Project Scope
+1. Admin logs in and creates an event
+2. Event data is saved to `localStorage`
+3. Users view available events
+4. Users register for an event
+5. A unique registration ID is generated
+6. QR code is created and displayed
+7. User downloads QR code for event entry
+---
+## 📂 Pages Included
 
-This project is:
-- ❌ Not built for a hackathon
-- ✅ Built as a **personal learning & portfolio project**
-- Focused on **clean architecture and real-world logic**
+- Home / Event Listing
+- Event Registration Page
+- QR Code Confirmation Page
+- Admin Login Page
+- Admin Dashboard
+- Event Creation Page
+---
+## ⚠️ Known Limitations
+
+- Data persistence is limited to browser `localStorage`
+- Admin credentials are hardcoded (demo purpose)
+- No backend or server-side validation
+- No real payment gateway integration
+---
+
+
+## 🎯 Why I Built EventMate
+
+This project was built to:
+- Practice real-world frontend application flow
+- Understand state management without frameworks
+- Implement admin vs user logic
+- Work with QR code generation and validation
+- Build a portfolio-ready application from scratch
+
 
 ---
 

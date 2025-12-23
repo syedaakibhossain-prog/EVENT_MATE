@@ -24,7 +24,7 @@ loginForm.addEventListener("submit", function (e) {
     }// Check if email and password are correct
     if (email === adminEmail && pass === adminPassword) {
         // Set admin logged in in local storage
-        localStorage.setItem("admin_logged_in", "true");
+        localStorage.setItem("eventmate_admin_logged_in", "true");
         alert("login successful");
         // Redirect to admin dashboard
         window.location.href = "admin.html";

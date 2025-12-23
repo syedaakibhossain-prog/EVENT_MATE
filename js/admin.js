@@ -1,7 +1,7 @@
 /*
  * Admin Login Check
  */
-const adminLoggedIn = localStorage.getItem("admin_logged_in");
+const adminLoggedIn = localStorage.getItem("eventmate_admin_logged_in");
 if (!adminLoggedIn) {
     // If admin is not logged in, redirect to admin login page
     window.location.href = "admin-login.html";
@@ -15,7 +15,7 @@ const logoutBtn = document.getElementById("logoutBtn");
 // Add event listener to logout button
 logoutBtn.addEventListener("click", () => {
     // Remove admin logged in from local storage
-    localStorage.removeItem("admin_logged_in");
+    localStorage.removeItem("eventmate_admin_logged_in");
     // Redirect to admin login page
     window.location.href = "admin-login.html";
 });
