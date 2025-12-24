@@ -9,11 +9,7 @@
 ## ✅ MVP v1.0 — Completed & Functional
 
 The core problem EventMate aims to solve — secure event registration and QR-based attendee verification — is fully implemented and tested.
-/screenshots/register.png
-/screenshots/qr.png
-/screenshots/admin-login.png
-/screenshots/admin.png
-/screenshots/scan.png
+---
 
 
 
