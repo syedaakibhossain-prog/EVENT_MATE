@@ -50,7 +50,6 @@
                 <!-- Camera Placeholder -->
                 <div id="qr-reader" style="
                     width:100%;
-                    height:280px;
                     background:#f0f0f0;
                     border:2px dashed #ccc;
                     border-radius:6px;
@@ -59,9 +58,7 @@
                     justify-content:center;
                     color:#777;
                     margin-bottom:20px;
-                ">
-                    Camera feed will appear here
-                </div>
+                "></div>
 
                 <p style="font-size:14px; color:#666;">
                     Allow camera access and place the QR code inside the frame.
@@ -77,7 +74,7 @@
                 margin:30px auto;
                 padding:20px;
             ">
-
+                <p><strong>ID:</strong> <span id="scanid">—</span></p>
                 <p><strong>Name:</strong> <span id="scanName">—</span></p>
                 <p><strong>Email:</strong> <span id="scanEmail">—</span></p>
                 <p><strong>Payment Status:</strong> <span id="scanPayment">—</span></p>
@@ -101,7 +98,7 @@
     <footer class="footer">
         <p>&copy; 2025 EventMate. All rights reserved.</p>
     </footer>
-    <script src="https://unpkg.com/html5-qrcode"></script>
+    <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
     <script src="js/scan.js"></script>
 
 </body>
