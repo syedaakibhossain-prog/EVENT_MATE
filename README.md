@@ -127,8 +127,6 @@ User authentication system
 
 Event-specific registration routing
 
-Event details page
-
 Mobile-first UI improvements
 
 Payment status automation
