@@ -99,7 +99,7 @@ No backend (intentional MVP design choice)
 
 Git-based version control
 
-🧪 MVP Scope Clarification
+## 🧪 MVP Scope Clarification
 
 This MVP focuses on functionality over scale.
 
