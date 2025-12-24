@@ -2,7 +2,20 @@
  * Registration Form
  */
 const form = document.getElementById("registrationForm");
-
+const paymentSection = document.getElementById("paymentSection");
+const selectedEvent = JSON.parse(
+    localStorage.getItem("eventmate_selected_event")
+);
+/**
+ * Payment Section
+ */
+paymentSection.innerHTML = `
+    <h3 style="margin-top: 30px;">Registration Fee</h3>
+    <p><strong>Amount:</strong> ₹${selectedEvent.registrationFee}</p>
+`;
+/**
+ * Event listener for form submission
+ */
 form.addEventListener("submit", function (e) {
     // Prevent default form submission
     e.preventDefault();
@@ -39,6 +52,7 @@ form.addEventListener("submit", function (e) {
      */
     const newRegistration = {
         id: "EVT-" + Date.now(),
+        eventName: selectedEvent.name,
         name,
         email,
         phone,

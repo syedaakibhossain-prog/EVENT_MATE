@@ -39,6 +39,7 @@ if (registrations.length === 0) {
         const row = document.createElement("tr");
         row.innerHTML = `
             <td>${registration.id}</td>
+            <td>${registration.eventName}</td>
             <td>${registration.name}</td>
             <td>${registration.email}</td>
             <td>${registration.phone}</td>

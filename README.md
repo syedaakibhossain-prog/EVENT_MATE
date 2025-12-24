@@ -1,168 +1,170 @@
 # 🎟️ EventMate — MVP v1.0
 
-## EventMate is a QR-based event registration and check-in system built to streamline event entry verification with a simple, reliable workflow.
+EventMate is a web-based event management system that enables seamless event registration, QR-based entry verification, and admin-controlled event management — built using pure frontend technologies with a real-world data flow.
 
-## This release marks the completion of MVP v1.0, delivering a fully functional end-to-end flow for users and admins.
-
-## 🚀 MVP Status
-
-## ✅ MVP v1.0 — Completed & Functional
-
-The core problem EventMate aims to solve — secure event registration and QR-based attendee verification — is fully implemented and tested.
+🔗 Live Demo:
+https://syedaakibhossain-prog.github.io/EVENT_MATE/
 ---
+## 📌 Project Status
 
+✅ MVP v1.0 – Completed
+🚀 Core event flow, registration, and QR-based check-in are fully functional.
+---
+## 🔥 About the Project
 
+EventMate is a personal portfolio project built to simulate a real-world event registration and verification system.
 
-## 🔥 What EventMate Does
+The project focuses on:
 
-Users register for an event and receive a unique QR code
+Clean frontend architecture
 
-Admin scans the QR code at entry
+Practical use of localStorage as a temporary database
 
-System verifies registration and marks attendance
+End-to-end event flow (Admin → User → QR → Scan → Check-in)
 
-Duplicate check-ins are prevented
-
+Building MVP-level features before backend integration
+---
+## 🧩 Core Workflow (End-to-End)
+Admin creates event
+        ↓
+User views events
+        ↓
+User registers for a selected event
+        ↓
+QR code generated with registration ID
+        ↓
+Admin scans QR code
+        ↓
+User verified & checked-in
+---
 ## ✅ Current Features (MVP v1.0)
+### 👤 User Side
 
-## 👤 User Features
+View all available events
 
-View event information
+View event details (name, venue, date, fee)
 
-Register for an event via form
+Register for a selected event
 
-Registration data stored locally
+Payment section dynamically shows correct event fee
 
-Automatic unique registration ID generation
+Unique registration ID generated
 
-QR code generated after successful registration
+QR code generated after registration
 
-QR code contains the registration ID
+Downloadable QR code
 
-Download QR code as an image
+Event name displayed on:
 
-Redirect flow: Registration → QR page
+Registration page
 
-## 🛠️ Admin Features
+QR page
 
-Secure admin login (credential-based)
+### 🛠️ Admin Side
 
-Admin dashboard access
+Secure admin login
 
-Dedicated QR scanning page
+Admin dashboard
 
-Real-time QR code scanning using device camera
+Create multiple events
 
-Verify attendee details:
-
-Registration ID
+Set event-specific:
 
 Name
 
-Email
+Description
 
-Payment status
+Venue
 
-Check-in functionality
+Date
 
-Prevents duplicate check-ins
-
-Persistent attendance status stored
-
-📷 QR & Scanning System
-
-QR codes generated using QRCode.js
-
-QR scanning powered by html5-qrcode
-
-Camera permission handling
-
-Graceful handling of scan errors
-
-Tested with printed QR codes (real-world use case)
-
-## ⚙️ Technical Implementation
-
-Frontend: HTML5, CSS3, Vanilla JavaScript (ES6)
-
-Storage: localStorage (for MVP data persistence)
-
-Libraries:
-
-QRCode.js — QR generation
-
-html5-qrcode — Camera-based QR scanning
-
-Page-specific JavaScript architecture
-
-No backend (intentional MVP design choice)
-
-Git-based version control
-
-## 🧪 MVP Scope Clarification
-
-This MVP focuses on functionality over scale.
-
-Included:
-
-Complete registration → scan → check-in workflow
-
-Admin verification logic
-
-Real-world QR scanning validation
-
-Excluded (Post-MVP):
-
-Backend & database
-
-Online payments
-
-Multi-event routing
-
-User authentication system
-
-## 🛣️ Planned Features (Post-MVP / v1.x)
-
-## 👤 User Enhancements
-
-Event-specific registration routing
-
-Mobile-first UI improvements
-
-Payment status automation
-
-## 🛠️ Admin Enhancements
+Registration fee
 
 View registered users per event
 
-QR scan history
+QR code scanning using camera
 
-Attendance analytics
+Real-time registration verification
 
-Edit & delete events
+Check-in management (Checked-in / Not checked-in)
 
-## 🔐 System Enhancements
+Prevent duplicate check-ins
 
-Backend integration
+### 📷 QR & Verification System
+
+QR code contains unique registration ID
+
+Live camera scanning via browser
+
+Automatic user lookup from stored registrations
+
+Displays:
+
+User name
+
+Email
+
+Event name
+
+Payment status
+
+Check-in status
+
+---
+## ⚙️ Tech Stack
+
+HTML5
+
+CSS3
+
+Vanilla JavaScript (ES6)
+
+html5-qrcode (QR scanning)
+
+QRCode.js (QR generation)
+
+LocalStorage (data persistence)
+
+Git & GitHub (version control & deployment)
+---
+## 🧠 Architectural Highlights
+
+Page-specific JavaScript files (clean separation of concerns)
+
+Event-based data model
+
+Safe parsing & validation of localStorage
+
+MVP-ready structure that can be upgraded to backend easily
+---
+## 🚀 Future Improvements (Post-MVP)
+
+Backend integration (Node.js / Firebase / Supabase)
 
 Database support
 
-Authentication & authorization
+Admin analytics dashboard
 
-Role-based access control
+Role-based authentication
 
-## 📌 Project Nature
+Payment gateway integration
 
-✅ Personal project
+Event capacity limits
 
-✅ Portfolio-ready
+Email confirmation with QR code
 
-✅ Built for learning real-world frontend logic
+Deployment with server-side verification
+---
+## 🧪 Project Scope
 
-❌ Not a hackathon project
+✅ Personal learning & portfolio project
 
-❌ Not production-deployed (yet)
+❌ Not built for commercial use
 
+❌ No backend (intentionally frontend-only MVP)
+---
 ## 📄 License
 
-This project is intended for educational and portfolio purposes.
+This project is open for educational and portfolio use.
+---
+## 💡 EventMate — Smart Events. Simple Entry.

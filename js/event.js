@@ -30,8 +30,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     // Loop through events data and display them
     eventsData.forEach(event => {
-        const div = document.createElement("div");
-        div.innerHTML = `
+        const eventCard = document.createElement("div");
+        eventCard.classList.add("event-card");
+        eventCard.innerHTML = `
             <h1>${event.name}</h1>
             <p>${event.description}</p>
             <p>
@@ -39,9 +40,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 <strong>Venue:</strong> ${event.venue}<br>
                 <strong>Fee:</strong> ₹${event.registrationFee}
             </p>
-            <a href="register.html" class="btn btn-primary">Register</a>
+            <button class="btn btn-primary">Register</button>
         `;
+        // Event listener for register button
+        eventCard.querySelector("button").addEventListener("click", () => {
+            localStorage.setItem("eventmate_selected_event", JSON.stringify(event));
+            window.location.href = "register.html";
+        })
         // Append event to events container
-        eventsContainer.appendChild(div);
+        eventsContainer.appendChild(eventCard);
     });
 });

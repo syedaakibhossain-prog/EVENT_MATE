@@ -1,4 +1,17 @@
 /**
+ * Event Info
+ */
+
+const eventInfo = document.getElementById("eventInfo");
+eventData = JSON.parse(
+    localStorage.getItem("eventmate_selected_event")
+);
+eventInfo.innerHTML = `
+    <p>Event Name: <strong>${eventData.name}</strong></p>
+`;
+
+
+/**
  * Generate QR Code
  */
 function generateQr() {

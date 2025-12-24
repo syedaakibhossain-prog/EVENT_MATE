@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    console.log("Scanner JS loaded");
+
 
     const scanid = document.getElementById("scanid");
     const scanName = document.getElementById("scanName");
@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const scanPayment = document.getElementById("scanPayment");
     const scanStatus = document.getElementById("scanStatus");
     const checkInBtn = document.getElementById("checkInBtn");
+    const scanEventName = document.getElementById("scanEventName");
 
     // QR Reader container ID must exist in HTML
     const qrScanner = new Html5Qrcode("qr-reader");
@@ -45,6 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Update UI
         scanid.textContent = registration.id;
+        scanEventName.textContent = registration.eventName;
         scanName.textContent = registration.name;
         scanEmail.textContent = registration.email;
         scanPayment.textContent = registration.payment;
