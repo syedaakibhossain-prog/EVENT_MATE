@@ -1,170 +1,106 @@
-# 🎟️ EventMate — MVP v1.0
+# 🎟️ EventMate
 
-EventMate is a web-based event management system that enables seamless event registration, QR-based entry verification, and admin-controlled event management — built using pure frontend technologies with a real-world data flow.
+EventMate is an event management learning project focused on understanding backend APIs and full-stack fundamentals.
 
-🔗 Live Demo:
-https://syedaakibhossain-prog.github.io/EVENT_MATE/
----
-## 📌 Project Status
+This repository currently contains the early backend stage of EventMate, built step by step using Node.js and Express.
 
-✅ MVP v1.0 – Completed
-🚀 Core event flow, registration, and QR-based check-in are fully functional.
----
-## 🔥 About the Project
+## 🚧 Status: In Development (Learning Phase)
 
-EventMate is a personal portfolio project built to simulate a real-world event registration and verification system.
+## 🚀 Current Features
+✅ Backend API (Node + Express)
 
-The project focuses on:
+Basic Express server setup
 
-Clean frontend architecture
+Runs locally on http://localhost:3000
 
-Practical use of localStorage as a temporary database
+REST-style API structure
 
-End-to-end event flow (Admin → User → QR → Scan → Check-in)
+✅ Event Management API (No Database Yet)
 
-Building MVP-level features before backend integration
----
-## 🧩 Core Workflow (End-to-End)
-Admin creates event
-        ↓
-User views events
-        ↓
-User registers for a selected event
-        ↓
-QR code generated with registration ID
-        ↓
-Admin scans QR code
-        ↓
-User verified & checked-in
----
-## ✅ Current Features (MVP v1.0)
-### 👤 User Side
+Events are stored temporarily using an in-memory array.
 
-View all available events
+Each event includes:
 
-View event details (name, venue, date, fee)
+id
 
-Register for a selected event
+title
 
-Payment section dynamically shows correct event fee
+description
 
-Unique registration ID generated
+time
 
-QR code generated after registration
+price
 
-Downloadable QR code
+##📡 Available API Endpoints
+🔹 Get all events
+GET /events
 
-Event name displayed on:
 
-Registration page
+Returns a list of all events.
 
-QR page
+🔹 Create a new event
+POST /events
 
-### 🛠️ Admin Side
 
-Secure admin login
+Request body (JSON):
 
-Admin dashboard
+{
+  "title": "Tech Talk",
+  "description": "Discussion on AI and future tech",
+  "time": "4:00 PM",
+  "price": 200
+}
 
-Create multiple events
+🔹 Delete an event
+DELETE /events/:id
 
-Set event-specific:
 
-Name
+Deletes an event using its unique ID.
 
-Description
+##🧠 Business Rules Implemented
 
-Venue
+❌ Existing events cannot be updated
 
-Date
+✅ Events can only be created or deleted
 
-Registration fee
+These rules are enforced at the backend level
 
-View registered users per event
+##🗂 Project Structure
+EventMate/
+├── client/          # Frontend (HTML, CSS, JS)
+├── server/          # Backend (Node + Express)
+│   └── server.js
+└── README.md
 
-QR code scanning using camera
+##🛠 Tech Stack (Current)
 
-Real-time registration verification
+Node.js
 
-Check-in management (Checked-in / Not checked-in)
+Express.js
 
-Prevent duplicate check-ins
+JavaScript
 
-### 📷 QR & Verification System
+REST APIs
 
-QR code contains unique registration ID
+##📌 Planned Improvements
 
-Live camera scanning via browser
+Connect frontend to backend API
 
-Automatic user lookup from stored registrations
+Add event creation form in frontend
 
-Displays:
+Add database (MongoDB)
 
-User name
+Add authentication & admin access
 
-Email
+Deploy backend and frontend
 
-Event name
+##📖 Learning Note
 
-Payment status
+This project is intentionally built slowly and step by step to ensure a strong understanding of backend and full-stack development concepts.
 
-Check-in status
+Speed is not the priority — clarity and correctness are.
 
----
-## ⚙️ Tech Stack
+##👤 Author
 
-HTML5
-
-CSS3
-
-Vanilla JavaScript (ES6)
-
-html5-qrcode (QR scanning)
-
-QRCode.js (QR generation)
-
-LocalStorage (data persistence)
-
-Git & GitHub (version control & deployment)
----
-## 🧠 Architectural Highlights
-
-Page-specific JavaScript files (clean separation of concerns)
-
-Event-based data model
-
-Safe parsing & validation of localStorage
-
-MVP-ready structure that can be upgraded to backend easily
----
-## 🚀 Future Improvements (Post-MVP)
-
-Backend integration (Node.js / Firebase / Supabase)
-
-Database support
-
-Admin analytics dashboard
-
-Role-based authentication
-
-Payment gateway integration
-
-Event capacity limits
-
-Email confirmation with QR code
-
-Deployment with server-side verification
----
-## 🧪 Project Scope
-
-✅ Personal learning & portfolio project
-
-❌ Not built for commercial use
-
-❌ No backend (intentionally frontend-only MVP)
----
-## 📄 License
-
-This project is open for educational and portfolio use.
----
-## 💡 EventMate — Smart Events. Simple Entry.
+Aakib
+Aspiring Full-Stack Developer 🚀

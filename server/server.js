@@ -1,62 +1,32 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const PORT = 3000;
-
+const port = 3000;
 app.use(express.json());
-
-// Fake database
-let users = [];
-
-/**
- * GET all users
- */
-app.get('/users', (req, res) => {
-    res.json(users);
-
+let events = [];
+app.get("/events", (req, res) => {
+    res.json(events);
 });
-
-/**
- * CREATE a new user
- */
-app.post('/users', (req, res) => {
-    const newUser = {
-        id: users.length + 1,
-        ...req.body
-    };
-
-    users.push(newUser);
-    res.status(201).json({
-        message: 'User created',
-        user: newUser
-    });
-});
-
-/**
- * UPDATE a user
- */
-app.put('/users/:id', (req, res) => {
-    const userId = Number(req.params.id);
-
-    const user = users.find(u => u.id === userId);
-    if (!user) {
-        return res.status(404).json({ message: 'User not found' });
+app.post("/events", (req, res) => {
+    const event = {
+        id: Date.now(),
+        name: req.body.name,
+        description: req.body.description,
+        time: req.body.time,
+        location: req.body.location,
     }
-
-    Object.assign(user, req.body);
-    res.json({ message: 'User updated', user });
+    events.push(event);
+    res.status(201).json(event);
 });
 
-/**
- * DELETE a user
- */
-app.delete('/users/:id', (req, res) => {
-    const userId = Number(req.params.id);
-    users = users.filter(u => u.id !== userId);
-
-    res.json({ message: 'User deleted' });
+app.delete("/events/:id", (req, res) => {
+    const eventId = parseInt(req.params.id);
+    const eventExists = events.some(event => event.id === eventId);
+    if (!eventExists) {
+        return res.status(404).json({ error: "Event not found" });
+    }
+    events = events.filter(event => event.id !== eventId);
+    res.json({ message: "Event deleted successfully" });
 });
-
-// Start server
-app.listen(PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}`);
+app.listen(port, () => {
+    console.log(`EventMate API running on http://localhost:${port}`);
 });
