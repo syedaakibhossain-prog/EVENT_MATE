@@ -65,7 +65,7 @@ Deletes an event using its unique ID.
 
 These rules are enforced at the backend level
 
-##🗂 Project Structure
+## 🗂 Project Structure
 EventMate/
 ├── client/          # Frontend (HTML, CSS, JS)
 ├── server/          # Backend (Node + Express)
@@ -82,7 +82,7 @@ JavaScript
 
 REST APIs
 
-##📌 Planned Improvements
+## 📌 Planned Improvements
 
 Connect frontend to backend API
 
@@ -94,13 +94,13 @@ Add authentication & admin access
 
 Deploy backend and frontend
 
-##📖 Learning Note
+## 📖 Learning Note
 
 This project is intentionally built slowly and step by step to ensure a strong understanding of backend and full-stack development concepts.
 
 Speed is not the priority — clarity and correctness are.
 
-##👤 Author
+## 👤 Author
 
 Aakib
 Aspiring Full-Stack Developer 🚀
