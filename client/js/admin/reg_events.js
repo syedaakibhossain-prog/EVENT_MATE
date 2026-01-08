@@ -1,99 +1,88 @@
+import { dataService } from "../core/dataService.js";
 /**
- * reg_events.js
- * This file is responsible for adding events to local storage and rendering them on the event page.
+ * reg_events.js (ADMIN)
+ * Create, list and delete events
  */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    const nameInput = document.getElementById("name");
-    const descriptionInput = document.getElementById("description");
-    const venueInput = document.getElementById("venue");
-    const dateInput = document.getElementById("date");
-    const registrationFeeInput = document.getElementById("registrationFee");
-
     const addEventForm = document.getElementById("addEventForm");
     const eventsContainer = document.getElementById("events");
-    // Check if required HTML elements exist
-    if (!eventsContainer || !addEventForm) {
+
+    if (!addEventForm || !eventsContainer) {
         console.error("Required HTML elements not found");
         return;
     }
-    // Add event listener to add event form
+
+    /**
+     * ADD EVENT
+     */
     addEventForm.addEventListener("submit", (e) => {
         e.preventDefault();
-        // Get event data from form
-        const eventData = {
+
+        const newEvent = {
             id: Date.now(),
-            name: nameInput.value.trim(),
-            description: descriptionInput.value.trim(),
-            venue: venueInput.value.trim(),
-            date: dateInput.value,
-            registrationFee: registrationFeeInput.value
+            name: document.getElementById("name").value.trim(),
+            description: document.getElementById("description").value.trim(),
+            venue: document.getElementById("venue").value.trim(),
+            date: document.getElementById("date").value,
+            registrationFee: document.getElementById("registrationFee").value
         };
-        // Add event data to local storage
-        let eventsData = JSON.parse(
-            localStorage.getItem("eventmate_events")
-        ) || [];
-        // Add event data to local storage
-        eventsData.push(eventData);
-        // Add event data to local storage
-        localStorage.setItem(
-            "eventmate_events",
-            JSON.stringify(eventsData)
-        );
-        // Reset form
-        addEventForm.reset();
-        // Render events
-        renderEvents();
-    });
-    /**
-     *  renderEvents function is responsible for rendering events on the page.
-     */
-    function renderEvents() {
-        const eventsContainer = document.getElementById("events");
-        // Check if events container exists
-        if (!eventsContainer) {
-            console.error("Events container not found");
+
+        if (!newEvent.name || !newEvent.date) {
+            alert("Please fill required fields");
             return;
         }
-        // Get events data from local storage
-        let eventsData = JSON.parse(
-            localStorage.getItem("eventmate_events")
-        ) || [];
-        //clear events container
+
+        const events = dataService.getAllEvents();
+        events.push(newEvent);
+        dataService.saveEvents(events);
+
+        addEventForm.reset();
+        renderEvents();
+    });
+
+    /**
+     * RENDER EVENTS
+     */
+    function renderEvents() {
+        const events = dataService.getAllEvents();
         eventsContainer.innerHTML = "";
 
-        eventsData.forEach(event => {
-            const eventElement = document.createElement("div");
-            eventElement.innerHTML = `
-            <h2>${event.name}</h2>
-            <p>${event.description}</p>
-            <p>${event.venue}</p>
-            <p>${event.date}</p>
-            <p>₹${event.registrationFee}</p>
-            <button class = "btn btn-primary" onclick="deleteEvent('${event.name}')">Delete</button>
-        `;
-            eventsContainer.appendChild(eventElement);
+        if (events.length === 0) {
+            eventsContainer.innerHTML = "<p>No events created yet.</p>";
+            return;
+        }
+
+        events.forEach(event => {
+            const div = document.createElement("div");
+
+            div.innerHTML = `
+                <h2>${event.name}</h2>
+                <p>${event.description}</p>
+                <p>${event.venue}</p>
+                <p>${event.date}</p>
+                <p>₹${event.registrationFee}</p>
+                <button class="btn btn-danger">Delete</button>
+            `;
+
+            div.querySelector("button").addEventListener("click", () => {
+                deleteEvent(event.id);
+            });
+
+            eventsContainer.appendChild(div);
         });
     }
+
     /**
-     * deleteEvent function is responsible for deleting events from local storage.
+     * DELETE EVENT
      */
-    window.deleteEvent = function (name) {
-        console.log(name);
-        let eventsData = JSON.parse(
-            localStorage.getItem("eventmate_events")
-        ) || [];
-        //filter events data
-        eventsData = eventsData.filter(event => event.name !== name);
-
-        localStorage.setItem(
-            "eventmate_events",
-            JSON.stringify(eventsData)
-        );
-
+    function deleteEvent(eventId) {
+        let events = dataService.getAllEvents();
+        events = events.filter(event => event.id !== eventId);
+        dataService.saveEvents(events);
         renderEvents();
-    };
+    }
 
     renderEvents();
 });
