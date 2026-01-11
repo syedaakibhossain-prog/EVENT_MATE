@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     /**
      * ADD EVENT
      */
-    addEventForm.addEventListener("submit", (e) => {
+    addEventForm.addEventListener("submit", async (e) => {
         e.preventDefault();
 
         const newEvent = {
@@ -34,19 +34,19 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        const events = dataService.getAllEvents();
-        events.push(newEvent);
-        dataService.saveEvents(events);
+        await dataService.createEvents(newEvent);
 
         addEventForm.reset();
+
+
         renderEvents();
     });
 
     /**
      * RENDER EVENTS
      */
-    function renderEvents() {
-        const events = dataService.getAllEvents();
+    async function renderEvents() {
+        const events = await dataService.getAllEvents();
         eventsContainer.innerHTML = "";
 
         if (events.length === 0) {
