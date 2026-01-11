@@ -14,8 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
     /**
      * this function is used to load events
      */
-    function loadEvents() {
-        const events = dataService.getAllEvents();
+    async function loadEvents() {
+        const events = await dataService.getAllEvents();
 
         if (events.length === 0) {
             eventsContainer.innerHTML = `

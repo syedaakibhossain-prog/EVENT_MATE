@@ -1,17 +1,46 @@
+const API_URL = "http://localhost:3000/api";
+
 export const dataService = {
     /**
      * EVENTS
      */
-    getAllEvents: () => {
-        return JSON.parse(localStorage.getItem("eventmate_events")) || [];
-    },
 
-    saveEvents(events) {
-        localStorage.setItem("eventmate_events",
-            JSON.stringify(events));
+    async getAllEvents() {
+        try {
+            const res = await fetch(`${API_URL}/events`);
+            if (!res.ok) {
+                throw new console.error("Failed to fetch events");
+
+            }
+            const data = await res.json();
+            return data;
+
+        }
+        catch (error) {
+            console.error("Failed to fetch events", error);
+            return JSON.parse(localStorage.getItem("eventmate_events")) || [];
+        }
+
     },
-    getEventById(eventId) {
-        return this.getAllEvents().find(event => event.id === eventId);
+    async createEvents(events) {
+        try {
+            const res = await fetch(`${API_URL}/events`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(events)
+            });
+            if (!res.ok) {
+                throw new Error("Failed to save events")
+            }
+            const data = await res.json();
+            return data;
+        }
+        catch (error) {
+            console.error("Failed to save events", error);
+            return JSON.parse(localStorage.getItem("eventmate_events")) || [];
+        }
     },
 
     /**
@@ -24,14 +53,14 @@ export const dataService = {
         );
     },
 
-    getSelectedEvent() {
-        const eventId =
-            localStorage.getItem("eventmate_selected_event");
 
+    async getSelectedEvent() {
+        const eventId = localStorage.getItem("eventmate_selected_event");
         if (!eventId) return null;
-
-        return this.getEventById(eventId);
+        const events = await this.getAllEvents();
+        return events.find(event => event.id === eventId);
     },
+
 
 
     /**

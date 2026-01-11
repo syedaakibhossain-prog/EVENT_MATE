@@ -9,4 +9,6 @@ const router = express.Router();
 router.get("/", getAllEvents);
 router.post("/", creatEvents);
 
+
+
 export default router;
