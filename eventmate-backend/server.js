@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import eventsRoutes from "./routes/events.routes.js";
-import { events } from "./data/events.data.js";
+
 
 const app = express();
 

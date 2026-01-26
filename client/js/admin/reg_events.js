@@ -1,3 +1,4 @@
+import { deleteEvent } from "../../../eventmate-backend/controlers/events.controlers.js";
 import { dataService } from "../core/dataService.js";
 /**
  * reg_events.js (ADMIN)
@@ -66,23 +67,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 <button class="btn btn-danger">Delete</button>
             `;
 
-            div.querySelector("button").addEventListener("click", () => {
-                deleteEvent(event.id);
+            div.querySelector("button").addEventListener("click", async () => {
+                await dataService.deleteEvent(event.id);
+                renderEvents();
             });
+
+
 
             eventsContainer.appendChild(div);
         });
     }
 
-    /**
-     * DELETE EVENT
-     */
-    function deleteEvent(eventId) {
-        let events = dataService.getAllEvents();
-        events = events.filter(event => event.id !== eventId);
-        dataService.saveEvents(events);
-        renderEvents();
-    }
+
+
 
     renderEvents();
 });
