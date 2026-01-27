@@ -46,7 +46,10 @@ export const dataService = {
     async deleteEvent(eventId) {
         try {
             const res = await fetch(`${API_URL}/events/${eventId}`, {
-                method: "DELETE"
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "aplication/json"
+                },
             });
 
             if (!res.okk) {

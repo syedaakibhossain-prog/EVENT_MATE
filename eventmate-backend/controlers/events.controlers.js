@@ -33,5 +33,5 @@ export const deleteEvent = (req, res) => {
 
     }
     events.splice(index, 1);
-    res.json({ message: "Event deleted succesfully" });
+    res.status(201).json({ message: "Event deleted succesfully" });
 };
