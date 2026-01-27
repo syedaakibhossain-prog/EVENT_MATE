@@ -43,6 +43,25 @@ export const dataService = {
         }
     },
 
+    async deleteEvent(eventId) {
+        try {
+            const res = await fetch(`${API_URL}/events/${eventId}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "aplication/json"
+                },
+            });
+
+            if (!res.okk) {
+                throw new Error("Failled to delete Event");
+            }
+            return await res.json()
+        }
+        catch (error) {
+            console.error("API delete failed", error);
+        }
+    },
+
     /**
      * SELECTED EVENT
      */

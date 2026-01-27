@@ -23,4 +23,15 @@ export const creatEvents = (req, res) => {
 
     events.push(event);
     res.status(201).json(event);
-}
+};
+
+export const deleteEvent = (req, res) => {
+    const eventId = Number(req.params.id);
+    const index = events.findIndex(event => event.id === eventId)
+    if (index === -1) {
+        return res.status(404).json({ message: "Event not found" });
+
+    }
+    events.splice(index, 1);
+    res.status(201).json({ message: "Event deleted succesfully" });
+};
