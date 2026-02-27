@@ -1,28 +1,17 @@
-import { deleteEvent } from "../../../eventmate-backend/controlers/events.controlers.js";
 import { dataService } from "../core/dataService.js";
-/**
- * reg_events.js (ADMIN)
- * Create, list and delete events
- */
+
 
 document.addEventListener("DOMContentLoaded", () => {
 
     const addEventForm = document.getElementById("addEventForm");
     const eventsContainer = document.getElementById("events");
 
-    if (!addEventForm || !eventsContainer) {
-        console.error("Required HTML elements not found");
-        return;
-    }
 
-    /**
-     * ADD EVENT
-     */
     addEventForm.addEventListener("submit", async (e) => {
         e.preventDefault();
 
         const newEvent = {
-            id: Date.now(),
+
             name: document.getElementById("name").value.trim(),
             description: document.getElementById("description").value.trim(),
             venue: document.getElementById("venue").value.trim(),
@@ -30,56 +19,56 @@ document.addEventListener("DOMContentLoaded", () => {
             registrationFee: document.getElementById("registrationFee").value
         };
 
-        if (!newEvent.name || !newEvent.date) {
-            alert("Please fill required fields");
+        if (!newEvent.name || !newEvent.description || !newEvent.venue || !newEvent.date || !newEvent.registrationFee) {
+            alert("Please fill in all required fields.");
             return;
         }
 
         await dataService.createEvents(newEvent);
-
         addEventForm.reset();
-
-
         renderEvents();
     });
 
-    /**
-     * RENDER EVENTS
-     */
+
     async function renderEvents() {
         const events = await dataService.getAllEvents();
         eventsContainer.innerHTML = "";
 
-        if (events.length === 0) {
+        if (!events || events.length === 0) {
             eventsContainer.innerHTML = "<p>No events created yet.</p>";
             return;
         }
 
         events.forEach(event => {
             const div = document.createElement("div");
+            div.className = "event-card";
 
-            div.innerHTML = `
-                <h2>${event.name}</h2>
-                <p>${event.description}</p>
-                <p>${event.venue}</p>
-                <p>${event.date}</p>
-                <p>₹${event.registrationFee}</p>
-                <button class="btn btn-danger">Delete</button>
-            `;
+            const name = document.createElement("h2");
+            name.textContent = event.name;
 
-            div.querySelector("button").addEventListener("click", async () => {
-                await dataService.deleteEvent(event.id);
-                renderEvents();
+            const desc = document.createElement("p");
+            desc.textContent = event.description;
+
+            const details = document.createElement("p");
+            details.textContent = `${event.venue} | ${event.date} | ₹${event.registrationFee}`;
+
+            const deleteBtn = document.createElement("button");
+            deleteBtn.className = "btn btn-danger";
+            deleteBtn.textContent = "Delete";
+            deleteBtn.addEventListener("click", async () => {
+                if (confirm(`Delete "${event.name}"?`)) {
+                    await dataService.deleteEvent(event.id);
+                    renderEvents();
+                }
             });
 
-
-
+            div.appendChild(name);
+            div.appendChild(desc);
+            div.appendChild(details);
+            div.appendChild(deleteBtn);
             eventsContainer.appendChild(div);
         });
     }
-
-
-
 
     renderEvents();
 });

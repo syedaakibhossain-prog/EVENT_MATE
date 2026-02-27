@@ -17,7 +17,7 @@ export const creatEvents = (req, res) => {
         description,
         venue,
         date,
-        registrationFee,
+        registrationFee: Number(registrationFee),
         createdAt: new Date()
     };
 
@@ -27,11 +27,20 @@ export const creatEvents = (req, res) => {
 
 export const deleteEvent = (req, res) => {
     const eventId = Number(req.params.id);
-    const index = events.findIndex(event => event.id === eventId)
+    const index = events.findIndex(event => event.id === eventId);
     if (index === -1) {
         return res.status(404).json({ message: "Event not found" });
-
     }
     events.splice(index, 1);
-    res.status(201).json({ message: "Event deleted succesfully" });
+
+    res.status(200).json({ message: "Event deleted successfully" });
+};
+
+export const setSelectedEvent = (req, res) => {
+    const eventId = Number(req.params.id);
+    const event = events.find(event => event.id === eventId);
+    if (!event) {
+        return res.status(404).json({ message: "Event not found" });
+    }
+    res.status(200).json(event);
 };
