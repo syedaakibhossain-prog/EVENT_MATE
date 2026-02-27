@@ -102,8 +102,8 @@ EVENT_MATE/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/EVENT_MATE.git
-cd event-mate
+git clone https://github.com/syedaakibhossain-prog/EVENT_MATE.git
+cd EVENT_MATE
 ```
 
 ### 2. Install backend dependencies
@@ -118,7 +118,7 @@ npm install
 Create a `.env` file inside `eventmate-backend/`:
 
 ```
-ADMIN_EMAIL=admin@eventmate.com
+ADMIN_EMAIL=@eventmate.com
 ADMIN_PASSWORD=yourpassword
 FRONTEND_URL=http://127.0.0.1:5500
 ```
@@ -260,4 +260,5 @@ Currently all data (events and users) is stored in in-memory arrays on the serve
 
 - The frontend uses native ES Modules (`type="module"`), so it must be served over HTTP — opening HTML files directly as `file://` URLs will not work
 - The QR scanner requires camera access and only works over HTTPS or `localhost`
+
 - Duplicate registrations are prevented — the same email cannot register for the same event twice
