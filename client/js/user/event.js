@@ -1,7 +1,5 @@
 import { dataService } from "../core/dataService.js";
-/**
- * this file is used to display events
- */
+
 document.addEventListener("DOMContentLoaded", () => {
     const eventsContainer = document.querySelector(".hero");
 
@@ -11,13 +9,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     loadEvents();
-    /**
-     * this function is used to load events
-     */
+
     async function loadEvents() {
         const events = await dataService.getAllEvents();
 
-        if (events.length === 0) {
+        if (!events || events.length === 0) {
             eventsContainer.innerHTML = `
                 <p style="color:red; font-size:1.5rem; text-align:center;">
                     No events available
@@ -27,10 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         renderEvents(events);
     }
-    /**
-     * this function is used to render events
-     * @param {Array} events 
-     */
+
     function renderEvents(events) {
         eventsContainer.innerHTML = "";
 
@@ -38,28 +31,49 @@ document.addEventListener("DOMContentLoaded", () => {
             const card = document.createElement("div");
             card.classList.add("event-card");
 
-            card.innerHTML = `
-                <h2>${event.name}</h2>
-                <p>${event.description}</p>
-                <strong>Venue: ${event.venue}</strong><br>
-                <strong>Date: ${event.date}</strong><br>
-                <strong>Price: ₹${event.registrationFee}</strong><br>
-                <button class="btn btn-primary">Register</button>
+
+            const name = document.createElement("h2");
+            name.textContent = event.name;
+
+            const desc = document.createElement("p");
+            desc.textContent = event.description;
+
+            const details = document.createElement("div");
+            details.innerHTML = `
+                <strong>Venue:</strong> ${escapeHtml(event.venue)}<br>
+                <strong>Date:</strong> ${escapeHtml(event.date)}<br>
+                <strong>Price:</strong> ₹${escapeHtml(String(event.registrationFee))}
             `;
 
-            card.querySelector("button").addEventListener("click", () => {
-                selectEvent(event.id);
-            });
+            const btn = document.createElement("button");
+            btn.className = "btn btn-primary";
+            btn.textContent = "Register";
+            btn.addEventListener("click", () => selectEvent(event.id));
 
+            card.appendChild(name);
+            card.appendChild(desc);
+            card.appendChild(details);
+            card.appendChild(btn);
             eventsContainer.appendChild(card);
         });
     }
-    /**
-     * this function is used to select event
-     * @param {string} eventId 
-     */
-    function selectEvent(eventId) {
-        dataService.setSelectedEvent(eventId);
+
+
+    async function selectEvent(eventId) {
+        const event = await dataService.setSelectedEvent(eventId);
+        if (!event) {
+            console.error("Event not found or failed to load");
+            alert("Could not load event. Please try again.");
+            return;
+        }
         window.location.href = "register.html";
     }
 });
+
+function escapeHtml(str) {
+    return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+}

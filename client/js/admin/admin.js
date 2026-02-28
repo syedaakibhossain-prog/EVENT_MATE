@@ -1,52 +1,50 @@
-/*
- * Admin Login Check
- */
+import { dataService } from "../core/dataService.js";
+
+
 const adminLoggedIn = localStorage.getItem("eventmate_admin_logged_in");
 if (!adminLoggedIn) {
-    // If admin is not logged in, redirect to admin login page
     window.location.href = "admin-login.html";
-} else {
-    console.log("Admin logged in");
 }
-/**
- * Logout Button Event Listener
- */
+
+
 const logoutBtn = document.getElementById("logoutBtn");
-// Add event listener to logout button
 logoutBtn.addEventListener("click", () => {
-    // Remove admin logged in from local storage
     localStorage.removeItem("eventmate_admin_logged_in");
-    // Redirect to admin login page
     window.location.href = "admin-login.html";
 });
 
-/**
- * Registrations Table
- */
+
 const registrationsTable = document.getElementById("registrationsTable");
 
-/**
- * Registrations Data
- */
-const registrations = JSON.parse(localStorage.getItem("eventmate_registrations")) || [];
+async function loadRegistrations() {
+    const registrations = await dataService.getAllUsers();
 
-if (registrations.length === 0) {
-    registrationsTable.innerHTML = "<tr><td colspan='6'>No registrations found</td></tr>";
-} else {
+    if (!registrations || registrations.length === 0) {
+        registrationsTable.innerHTML = "<tr><td colspan='6'>No registrations found</td></tr>";
+        return;
+    }
+
     registrationsTable.innerHTML = "";
-    registrations.forEach(registration => {
-        // Create a new row
+    registrations.forEach(reg => {
         const row = document.createElement("tr");
         row.innerHTML = `
-            <td>${registration.id}</td>
-            <td>${registration.eventName}</td>
-            <td>${registration.name}</td>
-            <td>${registration.email}</td>
-            <td>${registration.phone}</td>
-            <td>${registration.payment}</td>
-            <td>${registration.checkedIn ? "Yes" : "No"}</td>
+            <td>${escapeHtml(reg.id)}</td>
+            <td>${escapeHtml(reg.eventName)}</td>
+            <td>${escapeHtml(reg.name)}</td>
+            <td>${escapeHtml(reg.email)}</td>
+            <td>${escapeHtml(reg.phone)}</td>
+            <td>${reg.checkedIn ? " Yes" : " No"}</td>
         `;
-        // Append the row to the table
         registrationsTable.appendChild(row);
     });
 }
+
+function escapeHtml(str) {
+    return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+}
+
+loadRegistrations();
