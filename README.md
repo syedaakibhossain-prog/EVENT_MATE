@@ -102,7 +102,7 @@ EVENT_MATE/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/event-mate.git
+git clone https://github.com/your-username/EVENT_MATE.git
 cd event-mate
 ```
 
